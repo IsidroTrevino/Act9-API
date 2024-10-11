@@ -43,5 +43,26 @@ router.get('/usuario/:id/recibos', async (req, res) => {
         return res.json(usuario);
 });
 
+router.put('/usuario/:id/actualizar', async (req, res) => {
+    const { nombre, apellido, correo } = req.body;
+    const { id } = req.params;
+    const usuario = await prisma.usuario.update({
+        where: { id: parseInt(id) },
+        data: {
+            nombre,
+            apellido,
+            correo
+        }
+    });
+    return res.json(usuario);
+});
+
+router.delete('/usuario/:id/delete', async (req, res) => {
+    const { id } = req.params;
+    const usuario = await prisma.usuario.delete({
+        where: { id: parseInt(id) }
+    });
+    return res.json(usuario);
+});
 
 export default router;

@@ -4,9 +4,7 @@ import {prisma} from '../db.js'
 const router = Router();
 
 router.get('/recibos', async (req, res) => {
-    const recibos = await prisma.recibo.findMany(
-        
-    )
+    const recibos = await prisma.recibo.findMany()
     res.json(recibos)
 });
 
@@ -34,6 +32,29 @@ router.post('/recibo', async (req, res) => {
     return res.json(recibo);
 });
 
+router.put('/recibo/:id/actualizar', async (req, res) => {
+    const { user_id, tarifa, costo, inicioPeriodo, finPeriodo, kWh } = req.body;
+    const { id } = req.params;
+    const recibo = await prisma.recibo.update({
+        where: { id: parseInt(id) },
+        data: {
+            userId: user_id,
+            tarifa,
+            costo,
+            inicioPeriodo,
+            finPeriodo,
+            kWh
+        }
+    });
+    return res.json(recibo);
+});
 
+router.delete('/recibo/:id/delete', async (req, res) => {
+    const { id } = req.params;
+    const recibo = await prisma.recibo.delete({
+        where: { id: parseInt(id) }
+    });
+    return res.json(recibo);
+});
 
 export default router;
