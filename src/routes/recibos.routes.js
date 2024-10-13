@@ -49,7 +49,7 @@ router.put('/recibo/:id', async (req, res) => {
     return res.json(recibo);
 });
 
-router.delete('/recibo', async (req, res) => {
+router.delete('/recibo/:id', async (req, res) => {
     const { id } = req.params;
     const recibo = await prisma.recibo.delete({
         where: { id: parseInt(id) }
