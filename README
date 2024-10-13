@@ -1,0 +1,4 @@
+Para poder correr este codigo, inicialmente se debe de tener un archivo .env que contenga la informacion de la base de datos.
+Despues, se debe de correr en la terminal en la carpeta del proyecto el comando "npm install", asegurese de que cuente con esta herramienta instalada.
+Por ultimo, el servidor local se puede correr utilizando npm run dev, o si se quiere hacer llamadas al servidor hosteado en render, use la siguiente ruta base:
+https://act9-api-a00837104.onrender.com/api
