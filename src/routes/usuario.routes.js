@@ -57,7 +57,7 @@ router.put('/usuario', async (req, res) => {
     return res.json(usuario);
 });
 
-router.delete('/usuario', async (req, res) => {
+router.delete('/usuario/:id', async (req, res) => {
     const { id } = req.params;
     const usuario = await prisma.usuario.delete({
         where: { id: parseInt(id) }
