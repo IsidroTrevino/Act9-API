@@ -43,7 +43,7 @@ router.get('/usuario/:id/recibos', async (req, res) => {
         return res.json(usuario);
 });
 
-router.put('/usuario', async (req, res) => {
+router.put('/usuario/:id', async (req, res) => {
     const { nombre, apellido, correo } = req.body;
     const { id } = req.params;
     const usuario = await prisma.usuario.update({
