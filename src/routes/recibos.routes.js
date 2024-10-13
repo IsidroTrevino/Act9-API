@@ -32,7 +32,7 @@ router.post('/recibo', async (req, res) => {
     return res.json(recibo);
 });
 
-router.put('/recibo', async (req, res) => {
+router.put('/recibo/:id', async (req, res) => {
     const { user_id, tarifa, costo, inicioPeriodo, finPeriodo, kWh } = req.body;
     const { id } = req.params;
     const recibo = await prisma.recibo.update({
